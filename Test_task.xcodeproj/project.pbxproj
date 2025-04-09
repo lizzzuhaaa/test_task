@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		C91DD21D2DA6AA7000B86FE2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91DD21C2DA6AA7000B86FE2 /* AppDelegate.swift */; };
 		C91DD21F2DA6AA7000B86FE2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91DD21E2DA6AA7000B86FE2 /* SceneDelegate.swift */; };
-		C91DD2212DA6AA7000B86FE2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91DD2202DA6AA7000B86FE2 /* ViewController.swift */; };
+		C91DD2212DA6AA7000B86FE2 /* CharacterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91DD2202DA6AA7000B86FE2 /* CharacterTableViewController.swift */; };
 		C91DD2272DA6AA7000B86FE2 /* Test_task.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C91DD2252DA6AA7000B86FE2 /* Test_task.xcdatamodeld */; };
 		C91DD2292DA6AA7200B86FE2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C91DD2282DA6AA7200B86FE2 /* Assets.xcassets */; };
 		C91DD22C2DA6AA7200B86FE2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C91DD22A2DA6AA7200B86FE2 /* LaunchScreen.storyboard */; };
@@ -19,7 +19,7 @@
 		C91DD2192DA6AA7000B86FE2 /* Test_task.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Test_task.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C91DD21C2DA6AA7000B86FE2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C91DD21E2DA6AA7000B86FE2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		C91DD2202DA6AA7000B86FE2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		C91DD2202DA6AA7000B86FE2 /* CharacterTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterTableViewController.swift; sourceTree = "<group>"; };
 		C91DD2262DA6AA7000B86FE2 /* Test_task.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Test_task.xcdatamodel; sourceTree = "<group>"; };
 		C91DD2282DA6AA7200B86FE2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C91DD22B2DA6AA7200B86FE2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -56,15 +56,31 @@
 		C91DD21B2DA6AA7000B86FE2 /* Test_task */ = {
 			isa = PBXGroup;
 			children = (
+				C91DD2342DA6BC3C00B86FE2 /* CharacterDetails */,
+				C91DD2332DA6BC0E00B86FE2 /* CharacterTable */,
 				C91DD21C2DA6AA7000B86FE2 /* AppDelegate.swift */,
 				C91DD21E2DA6AA7000B86FE2 /* SceneDelegate.swift */,
-				C91DD2202DA6AA7000B86FE2 /* ViewController.swift */,
 				C91DD2282DA6AA7200B86FE2 /* Assets.xcassets */,
 				C91DD22A2DA6AA7200B86FE2 /* LaunchScreen.storyboard */,
 				C91DD22D2DA6AA7200B86FE2 /* Info.plist */,
 				C91DD2252DA6AA7000B86FE2 /* Test_task.xcdatamodeld */,
 			);
 			path = Test_task;
+			sourceTree = "<group>";
+		};
+		C91DD2332DA6BC0E00B86FE2 /* CharacterTable */ = {
+			isa = PBXGroup;
+			children = (
+				C91DD2202DA6AA7000B86FE2 /* CharacterTableViewController.swift */,
+			);
+			path = CharacterTable;
+			sourceTree = "<group>";
+		};
+		C91DD2342DA6BC3C00B86FE2 /* CharacterDetails */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CharacterDetails;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,7 +154,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C91DD2272DA6AA7000B86FE2 /* Test_task.xcdatamodeld in Sources */,
-				C91DD2212DA6AA7000B86FE2 /* ViewController.swift in Sources */,
+				C91DD2212DA6AA7000B86FE2 /* CharacterTableViewController.swift in Sources */,
 				C91DD21D2DA6AA7000B86FE2 /* AppDelegate.swift in Sources */,
 				C91DD21F2DA6AA7000B86FE2 /* SceneDelegate.swift in Sources */,
 			);
