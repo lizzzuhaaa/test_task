@@ -10,10 +10,9 @@ import UIKit
 
 final class APIManager{
     
-    //MARK: Properties
-    
     //MARK: Initializer
     init() {
+        downloadList()
     }
     
     //MARK: Methods    
@@ -76,5 +75,23 @@ final class APIManager{
         let formatter = ISO8601DateFormatter()
         formatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
         return formatter.date(from: strdate)
+    }
+    
+    private func downloadList(){
+        let charactersCD: [CharacterEntity] = CoreDataManager.shared.fetchCharacters()
+        if charactersCD.count == 0{
+            Task{
+                do{
+                    let characters = try await self.getCharactersListAPI()
+                    DispatchQueue.main.async {
+                        for character in characters {
+                            CoreDataManager.shared.addCharacter(character: character)
+                        }
+                    }
+                } catch{
+                    print(error.localizedDescription)
+                }
+            }
+        }
     }
 }

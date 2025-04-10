@@ -51,11 +51,13 @@ class CharacterTableViewController: UIViewController, UITableViewDelegate, UITab
                         } catch{
                             print(error.localizedDescription)
                         }
-                        
                     }
                 }
                 else {
-                    
+                    self.characters = CoreDataManager.shared.fetchCharacters()
+                    DispatchQueue.main.async {
+                        self.tableView.reloadData()
+                    }
                 }
             }
             .store(in: &cancellables)
