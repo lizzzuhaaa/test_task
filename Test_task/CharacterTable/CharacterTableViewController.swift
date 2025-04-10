@@ -63,6 +63,7 @@ class CharacterTableViewController: UIViewController, UITableViewDelegate, UITab
                     DispatchQueue.main.async {
                         self.tableView.reloadData()
                     }
+                    NetworkManager.shared.stopMonitoring()
                 }
             }
             .store(in: &cancellables)

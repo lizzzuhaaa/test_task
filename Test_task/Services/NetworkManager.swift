@@ -33,4 +33,8 @@ final class NetworkManager{
         }
         monitor.start(queue: queue)
     }
+    
+    func stopMonitoring() {
+        monitor.cancel()
+    }
 }
