@@ -8,7 +8,36 @@
 import Foundation
 import UIKit
 
-class CharacterDetailsViewController: UIViewController{
+protocol CharacterDetailsDisplayLogic: AnyObject
+{
+    func displayCharacterDetails(viewModel: CharacterDetails.FetchCharacterDetails.ViewModel)
+}
+
+class CharacterDetailsViewController: UIViewController, CharacterDetailsDisplayLogic
+{
+    var interactor: CharacterDetailsBusinessLogic?
+    
+    // MARK: Setup
+    
+    private func setup()
+    {
+        let viewController = self
+        let interactor = CharacterDetailsInteractor()
+        let presenter = CharacterDetailsPresenter()
+        viewController.interactor = interactor
+        interactor.presenter = presenter
+        presenter.viewController = viewController
+    }
+    
+    // MARK: View lifecycle
+    
+    override func viewDidLoad()
+    {
+        super.viewDidLoad()
+        setup()
+        fetchCharacterDetails()
+        setUpUI()
+    }
     
     //MARK: Properties
     var character: Character?
@@ -37,14 +66,36 @@ class CharacterDetailsViewController: UIViewController{
         return imageView
     }()
     
-    //MARK: Methods
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setUpUI()
+    func fetchCharacterDetails()
+    {
+        guard let character = self.character else {return}
+        let request = CharacterDetails.FetchCharacterDetails.Request(character: character)
+        interactor?.fetchCharacterDetails(request: request)
     }
     
+    func displayCharacterDetails(viewModel:CharacterDetails.FetchCharacterDetails.ViewModel)
+    {
+        nameLabel.text = viewModel.name
+        statusLabel.text = viewModel.status
+        typeLabel.text = viewModel.type
+        genderLabel.text = viewModel.gender
+        originNameLabel.text = viewModel.originName
+        locationNameLabel.text = viewModel.locationName
+        dateCreatedLabel.text = viewModel.dateCreated
+        imageView.image = viewModel.image
+    }
+}
+
+extension CharacterDetailsViewController{
+    private func createLabel(_ text: String, _ alignment:NSTextAlignment) -> UILabel{
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = text
+        label.textAlignment = alignment
+        label.layer.cornerRadius = 8
+        return label
+    }
     
-    //MARK: Set up UI view
     private func setUpUI(){
         view.backgroundColor = .white
         
@@ -66,25 +117,17 @@ class CharacterDetailsViewController: UIViewController{
             
             // Title
             addUIElement(nameLabel, contentView.topAnchor, 20, 400, 50)
-            nameLabel.text = character.name
-               
+            
             //Photo
-            imageView.image = character.image
             addUIElement(imageView, nameLabel.bottomAnchor, 15, 400, 200)
             
             //Description
             addUIElement(statusLabel, imageView.bottomAnchor, 16, 300, 50)
-            statusLabel.text! += character.status
             addUIElement(typeLabel, statusLabel.bottomAnchor, 16, 300, 50)
-            typeLabel.text! += character.type
             addUIElement(genderLabel, typeLabel.bottomAnchor, 16, 300, 50)
-            genderLabel.text! += character.gender
             addUIElement(originNameLabel, genderLabel.bottomAnchor, 16, 300, 50)
-            originNameLabel.text! += character.originName
             addUIElement(locationNameLabel, originNameLabel.bottomAnchor, 16, 300, 50)
-            locationNameLabel.text! += character.locationName
             addUIElement(dateCreatedLabel, locationNameLabel.bottomAnchor, 16, 300, 50)
-            dateCreatedLabel.text! += convertDate(character.dateCreated)
             dateCreatedLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20).isActive = true
         }
         
@@ -97,20 +140,5 @@ class CharacterDetailsViewController: UIViewController{
         
         inputView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
         inputView.topAnchor.constraint(equalTo: topAnchor, constant: topConstraintValue).isActive = true
-    }
-    
-    private func createLabel(_ text: String, _ alignment:NSTextAlignment) -> UILabel{
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = text
-        label.textAlignment = alignment
-        label.layer.cornerRadius = 8
-        return label
-    }
-    
-    private func convertDate(_ date: Date) -> String{
-        let formatter = DateFormatter()
-        formatter.dateStyle = .short
-        return formatter.string(from: date)
     }
 }
