@@ -16,14 +16,14 @@ extension CharacterEntity {
         return NSFetchRequest<CharacterEntity>(entityName: "CharacterEntity")
     }
 
-    @NSManaged public var dateCreated: Date?
-    @NSManaged public var gender: String?
-    @NSManaged public var image: Data?
-    @NSManaged public var locationName: String?
-    @NSManaged public var name: String?
-    @NSManaged public var originName: String?
-    @NSManaged public var status: String?
-    @NSManaged public var type: String?
+    @NSManaged public var name: String
+    @NSManaged public var status: String
+    @NSManaged public var type: String
+    @NSManaged public var gender: String
+    @NSManaged public var originName: String
+    @NSManaged public var locationName: String
+    @NSManaged public var image: Data
+    @NSManaged public var dateCreated: Date
 
 }
 
