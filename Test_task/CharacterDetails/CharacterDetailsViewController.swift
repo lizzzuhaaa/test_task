@@ -99,7 +99,7 @@ extension CharacterDetailsViewController{
     private func setUpUI(){
         view.backgroundColor = .white
         
-        if let character = self.character{
+        if self.character != nil{
             //Scroll
             view.addSubview(scrollView)
             scrollView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
