@@ -16,8 +16,9 @@ final class APIManager{
     init() {
     }
     
-    //MARK: Methods
-    func getCharactersList()async throws ->Array<Character> {
+    //MARK: Methods    
+    func getCharactersListAPI() async throws -> Array<Character> {
+        
         guard let url = URL(string: "https://rickandmortyapi.com/api/character")
         else {
             print("Invalid URL")
