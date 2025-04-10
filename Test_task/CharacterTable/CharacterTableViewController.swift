@@ -17,23 +17,28 @@ class CharacterTableViewController: UIViewController, UITableViewDelegate, UITab
     var characters: Array<Character> = []
     
     private var cancellables = Set<AnyCancellable>()
-
+    
     //MARK: Methods
     override func viewDidLoad() {
         super.viewDidLoad()
+        setUpUI()
         
+        tableView.delegate = self
+        tableView.dataSource = self
+        
+        loadCharacters()
+    }
+    
+    //MARK: Set up UI view
+    private func setUpUI(){
         view.backgroundColor = .white
-             
+        
         view.addSubview(tableView)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
-        
-        tableView.delegate = self
-        tableView.dataSource = self
-
-        loadCharacters()
     }
+    
     
     // MARK: Get data due to internet connection
     private func loadCharacters(){
@@ -71,11 +76,19 @@ class CharacterTableViewController: UIViewController, UITableViewDelegate, UITab
     // MARK: Settings for rows info
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell")!
-        let character = characters[indexPath.row]
+        let character = self.characters[indexPath.row]
         cell.selectionStyle = .gray
         cell.textLabel?.text = character.name
         cell.imageView?.image = character.image
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selectedCharacter = self.characters[indexPath.row]
+        let detailVC = CharacterDetailsViewController()
+        
+        detailVC.character = selectedCharacter
+        navigationController?.pushViewController(detailVC, animated: true)
     }
 }
 

@@ -15,6 +15,7 @@
 		C91DD2392DA6C3EC00B86FE2 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91DD2382DA6C3EC00B86FE2 /* Character.swift */; };
 		C91DD23C2DA6C77700B86FE2 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91DD23B2DA6C77700B86FE2 /* APIManager.swift */; };
 		C91DD2402DA6E7BE00B86FE2 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91DD23F2DA6E7BE00B86FE2 /* NetworkManager.swift */; };
+		C93FCAC72DA7BF8400B53E3D /* CharacterDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93FCAC62DA7BF8400B53E3D /* CharacterDetailsViewController.swift */; };
 		C9EC6F482DA7A7520024ABE7 /* CharacterEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EC6F462DA7A7520024ABE7 /* CharacterEntity+CoreDataClass.swift */; };
 		C9EC6F492DA7A7520024ABE7 /* CharacterEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EC6F472DA7A7520024ABE7 /* CharacterEntity+CoreDataProperties.swift */; };
 		C9EC6F4B2DA7A7CD0024ABE7 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EC6F4A2DA7A7CD0024ABE7 /* CoreDataManager.swift */; };
@@ -31,6 +32,7 @@
 		C91DD2382DA6C3EC00B86FE2 /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
 		C91DD23B2DA6C77700B86FE2 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		C91DD23F2DA6E7BE00B86FE2 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		C93FCAC62DA7BF8400B53E3D /* CharacterDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailsViewController.swift; sourceTree = "<group>"; };
 		C9EC6F462DA7A7520024ABE7 /* CharacterEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CharacterEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
 		C9EC6F472DA7A7520024ABE7 /* CharacterEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CharacterEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		C9EC6F4A2DA7A7CD0024ABE7 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
@@ -91,6 +93,7 @@
 		C91DD2342DA6BC3C00B86FE2 /* CharacterDetails */ = {
 			isa = PBXGroup;
 			children = (
+				C93FCAC62DA7BF8400B53E3D /* CharacterDetailsViewController.swift */,
 			);
 			path = CharacterDetails;
 			sourceTree = "<group>";
@@ -195,6 +198,7 @@
 				C91DD23C2DA6C77700B86FE2 /* APIManager.swift in Sources */,
 				C91DD2272DA6AA7000B86FE2 /* Characters.xcdatamodeld in Sources */,
 				C91DD2212DA6AA7000B86FE2 /* CharacterTableViewController.swift in Sources */,
+				C93FCAC72DA7BF8400B53E3D /* CharacterDetailsViewController.swift in Sources */,
 				C91DD2402DA6E7BE00B86FE2 /* NetworkManager.swift in Sources */,
 				C9EC6F482DA7A7520024ABE7 /* CharacterEntity+CoreDataClass.swift in Sources */,
 				C91DD2392DA6C3EC00B86FE2 /* Character.swift in Sources */,
