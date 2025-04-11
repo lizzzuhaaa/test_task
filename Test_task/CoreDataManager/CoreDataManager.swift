@@ -91,6 +91,4 @@ final class CoreDataManager{
         guard let image = UIImage(data: character.image) else {return nil}
         return Character(name: character.name, status: character.status, type: character.type, gender: character.gender, originName: character.originName, locationName: character.locationName, image: image, dateCreated: character.dateCreated)
     }
-    
-    
 }
