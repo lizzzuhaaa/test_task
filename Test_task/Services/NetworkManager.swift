@@ -20,9 +20,7 @@ final class NetworkManager{
     @Published var isConnected: Bool = false
     
     //MARK: Initializer
-    private init() {
-        startMonitoring()
-    }
+    private init() { startMonitoring() }
     
     //MARK: Methods
     private func startMonitoring() {

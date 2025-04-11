@@ -12,7 +12,6 @@ final class APIManager{
     
     //MARK: Initializer
     init() {}
-        //downloadList()}
     
     //MARK: Methods
     func getCharactersListAPI() async throws -> Array<Character> {

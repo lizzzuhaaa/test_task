@@ -51,11 +51,7 @@ final class CoreDataManager{
     }
     
     func fetchCharacters() -> [Character]{
-        let fetchRequest: NSFetchRequest<CharacterEntity> = CharacterEntity.fetchRequest()
-        guard let charactersCD = try? viewContext.fetch(fetchRequest) else {
-            print("Error occured while CoreData fetching")
-            return []
-        }
+        let charactersCD:[CharacterEntity] = fetchCharacters()
         var characters: [Character] = []
         for characterCD in charactersCD {
             if let character = convertToCharacter(characterCD){
