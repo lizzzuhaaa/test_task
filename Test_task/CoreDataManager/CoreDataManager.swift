@@ -80,11 +80,18 @@ final class CoreDataManager{
         saveContext()
     }
     
-    func deleteCharacter(character: CharacterEntity){
+    private func deleteCharacter(character: CharacterEntity){
         viewContext.delete(character)
         saveContext()
     }
     
+    
+    func deleteAllCharacters(){
+        let characters:[CharacterEntity] = fetchCharacters()
+        for character in characters{
+            deleteCharacter(character: character)
+        }
+    }
     
     
     private func convertToCharacter(_ character: CharacterEntity) -> Character?{

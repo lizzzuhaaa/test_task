@@ -23,6 +23,7 @@ class CharacterListWorker
                         Task{
                             do{
                                 let characters = try await apiManager.getCharactersListAPI()
+                                apiManager.downloadList()
                                 continuation.resume(returning: characters)
                                 
                             } catch{

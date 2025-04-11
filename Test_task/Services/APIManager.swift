@@ -11,11 +11,10 @@ import UIKit
 final class APIManager{
     
     //MARK: Initializer
-    init() {
-        downloadList()
-    }
+    init() {}
+        //downloadList()}
     
-    //MARK: Methods    
+    //MARK: Methods
     func getCharactersListAPI() async throws -> Array<Character> {
         
         guard let url = URL(string: "https://rickandmortyapi.com/api/character")
@@ -26,7 +25,7 @@ final class APIManager{
         let (data, _) = try await URLSession.shared.data(from: url)
         var res:Array<Character> = []
         guard let jsonData = try? JSONSerialization.jsonObject(with: data) as? [String:Any],
-            let charactersInfo = jsonData["results"] as? [[String:Any]]
+              let charactersInfo = jsonData["results"] as? [[String:Any]]
         else{
             print("Invalid data")
             return []
@@ -77,20 +76,18 @@ final class APIManager{
         return formatter.date(from: strdate)
     }
     
-    private func downloadList(){
-        let charactersCD: [CharacterEntity] = CoreDataManager.shared.fetchCharacters()
-        if charactersCD.count == 0{
-            Task{
-                do{
-                    let characters = try await self.getCharactersListAPI()
-                    DispatchQueue.main.async {
-                        for character in characters {
-                            CoreDataManager.shared.addCharacter(character: character)
-                        }
+    func downloadList(){
+        CoreDataManager.shared.deleteAllCharacters()
+        Task{
+            do{
+                let characters = try await self.getCharactersListAPI()
+                DispatchQueue.main.async {
+                    for character in characters {
+                        CoreDataManager.shared.addCharacter(character: character)
                     }
-                } catch{
-                    print(error.localizedDescription)
                 }
+            } catch{
+                print(error.localizedDescription)
             }
         }
     }
