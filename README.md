@@ -16,6 +16,5 @@
 
 Запуск проекту:
 git clone 'https://github.com/lizzzuhaaa/test_task.git'
-cd test_task
 
 У Xcode обираєте Test_task.xcodeproj або Test_task.xcworkspace, потрібний симулятор і запускаєте програму.
