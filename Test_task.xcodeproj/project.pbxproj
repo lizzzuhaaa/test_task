@@ -88,7 +88,6 @@
 		C91DD21B2DA6AA7000B86FE2 /* Test_task */ = {
 			isa = PBXGroup;
 			children = (
-				C9BB2F4E2DA99249000E434A /* Main.storyboard */,
 				C91DD2452DA798BC00B86FE2 /* CoreDataManager */,
 				C91DD23A2DA6C71400B86FE2 /* Services */,
 				C91DD2372DA6C3DC00B86FE2 /* Model */,
@@ -100,6 +99,7 @@
 				C91DD22D2DA6AA7200B86FE2 /* Info.plist */,
 				C91DD2252DA6AA7000B86FE2 /* Characters.xcdatamodeld */,
 				C9BB2F4C2DA9919E000E434A /* Launch Screen.storyboard */,
+				C9BB2F4E2DA99249000E434A /* Main.storyboard */,
 			);
 			path = Test_task;
 			sourceTree = "<group>";

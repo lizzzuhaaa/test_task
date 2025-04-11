@@ -6,25 +6,38 @@
 //
 
 import UIKit
-
+import Combine
 class CharacterListWorker
 {
+    private var cancellables = Set<AnyCancellable>()
     func fetchCharacters() async -> [Character]
     {
         let apiManager = APIManager()
-        if NetworkManager.shared.isConnected{
-            do{
-                return try await apiManager.getCharactersListAPI()
-                
-            } catch{
-                print(error.localizedDescription)
-                return []
-            }
-        }
-        else{
-            let characters: [Character] = CoreDataManager.shared.fetchCharacters()
-            NetworkManager.shared.stopMonitoring()
-            return characters
+        return await withCheckedContinuation { continuation in
+            NetworkManager.shared.$isConnected
+                .removeDuplicates()
+                .receive(on: DispatchQueue.main)
+                .prefix(1)
+                .sink { isConnected in
+                    if isConnected {
+                        Task{
+                            do{
+                                let characters = try await apiManager.getCharactersListAPI()
+                                continuation.resume(returning: characters)
+                                
+                            } catch{
+                                print(error.localizedDescription)
+                                continuation.resume(returning: [])
+                            }
+                        }
+                    }
+                    else {
+                        let characters: [Character] = CoreDataManager.shared.fetchCharacters()
+                        NetworkManager.shared.stopMonitoring()
+                        continuation.resume(returning: characters)
+                    }
+                }
+                .store(in: &cancellables)
         }
     }
 }
